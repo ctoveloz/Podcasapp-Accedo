@@ -1,0 +1,136 @@
+body{
+	font-family: Arial, Helvetica, Utkal, sans-serif;
+}
+
+.container-podcastapp{
+	width: 1230px;
+	height: 695px;
+	margin: 0 auto;
+	position: relative;
+	background: #dadada;
+	padding: 25px 50px;
+}
+
+#header{
+	width: 650px;
+	height: 70px;
+	background: #ca0002;
+	text-align: center;
+	border-radius: 20px;
+}
+
+.podcast-title{
+	font-size: 30px;
+	color: white;
+	padding: 17px;
+	text-transform: uppercase;
+}
+
+.container-title-podcast{
+	width: 100%;
+	height: 70px;
+	background: #ca0002;
+	margin-top: 25px;
+	border-radius: 20px;
+}
+
+.podcast-description{
+	font-size: 23px;
+	color: white;
+	padding: 8px;
+	text-transform: uppercase;
+	margin-left: 18px;
+}
+
+#aside{
+	width: 468px;
+	height: 480px;
+	background: white;
+	margin-top: 25px;
+	overflow: hidden;
+	border-radius: 25px;
+	float: left;
+}
+
+.top-button{
+	width: 100%;
+	height: 50px;
+}
+
+.container-list-podcast{
+	width: 100%;
+	height: 380px;
+	overflow: hidden;
+}
+
+.container-list-podcast ul{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.container-list-podcast ul li{
+	list-style-type: none;
+	background: #b60002;
+	color: white;
+	font-size: 22px;
+	text-align: center;
+	padding: 13px 0px;
+	margin-bottom: 14px;
+}
+
+.container-list-podcast ul li a{
+	color: white;
+	text-decoration: none;
+}
+
+.container-list-podcast ul li a.selected{
+	color: #ffbbba;
+}
+
+.down-button{
+	width: 100%;
+	height: 50px;
+}
+
+.down-icon{
+	font-size: 3em;
+	margin-left: 220px;
+}
+
+.up-icon{
+	font-size: 3em;
+	margin-left: 220px;
+}
+
+.video-podcast{
+	width: 672px;
+	height: 370px;
+	background: white;
+	float: right;
+	margin: 25px 45px 0px 0px;
+	border-radius: 25px;
+}
+
+.description-podcast{
+	width: 670px;
+	height: 90px;
+	background: #ca0002;
+	float: right;
+	border-radius: 25px;
+	margin: 20px 45px 0;
+	text-align: center;
+}
+
+.description-podcast p{
+	font-size: 18px;
+	color: white;
+	padding: 6px;
+	text-transform: uppercase;
+	margin-left: 6px;
+}
+ 
+.video-podcast #myVideo{
+	margin-top: 11px;
+	margin-left: 10px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Podcast App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    </head>
+    <body>
+
+        <!-- section container app-->
+        <section class="container-podcastapp">
+            <!-- header podcast title -->
+            <header id="header">
+                <h1 class="podcast-title"></h1>
+            </header>
+            <!-- end header app title -->
+            <!-- podcast description -->
+            <div class="container-title-podcast">
+                <h3 class="podcast-description"></h3>
+            </div>
+            <!-- end podcast description -->
+            <!-- list podcasts -->
+            <aside id="aside">
+                <i class="icon-chevron-up up-icon"></i>
+                <div class="container-list-podcast">
+                    <ul class="nav_holder">
+                    </ul>
+                </div>    
+                <i class="icon-chevron-down down-icon"></i>
+            </aside>
+            <!-- end list podcasts -->
+            <!-- container videos podcast by list -->
+            <section class="video-podcast">
+                <video id="myVideo" width="650" height="350" preload="auto" src="http://podcasts.cnn.net/cnn/big/podcasts/ac360/video/2013/08/09/cooper-podcast-8-8.cnn.m4v" type="video/mp4" autoplay controls></video>
+            </section>
+            <!-- end container videos podcast by list -->
+            <!-- container description podcast -->
+            <section class="description-podcast">
+                <p>descricao</p>
+            </section>
+            <!-- end container description podcast -->
+        </section>
+        <!-- end section container app -->    
+
+        <!-- scripts -->    
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/jquery.keynav.js"></script>
+        <script type="text/javascript">
+
+        // call json
+        $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Frss.cnn.com%2Fservices%2Fpodcasting%2Fac360%2Frss.xml'%20AND%20itemPath%3D%22%2F%2Fchannel%22&format=json&diagnostics=true&callback=?", function (data) {
+
+            $(".podcast-title").html(data.query.results.channel.title);
+            $(".podcast-description").html(data.query.results.channel.description);
+            $(".make-text").html(data.query.results.channel.item[0].title);
+
+            var titles = data.query.results.channel.item.map(function(item) {
+            return item.title;
+
+            });
+
+            var urls = data.query.results.channel.item.map(function(item) {
+            return item.origLink;
+
+            });  
+
+            var descri = data.query.results.channel.item.map(function(item) {
+            return item.summary;
+
+            });
+
+            var i=0;
+            $("a").each(function(){if($(this).css("color")=="#ffbbba")i=$(this).index();});
+            
+             $(".description-podcast p").html(descri[i]);
+
+            
+             $(".container-list-podcast ul").append('<li>' + titles.join('</li><li>'));
+                
+                $(".container-list-podcast ul li").each(function(key, value){
+                    var text = $(this).text();
+                    $(this).html('<a href="' + urls[key] + '">' + text + '</a>');
+                });
+
+                    $(".container-list-podcast ul li a").click(function(){
+                        var href = $(this).attr('href');
+                        alert(href);
+                        $("#myvideo").attr("src", href).get(0).play();
+                        return false;
+                    })             
+
+            // Load KeyNavigation
+            a=$('.nav_holder li a').keynav(function() {
+                return window.keyNavigationDisabled;
+            });             
+            
+        });
+        </script>
+
+    </body>
+</html>
