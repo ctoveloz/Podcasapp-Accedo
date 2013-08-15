@@ -31,23 +31,23 @@
             </div>
             <!-- end podcast description -->
             <!-- list podcasts -->
-            <aside id="aside">
+            <nav id="nav">
                 <i class="icon-chevron-up up-icon"></i>
                 <div class="container-list-podcast">
                     <ul class="nav_holder">
                     </ul>
                 </div>    
                 <i class="icon-chevron-down down-icon"></i>
-            </aside>
+            </nav>
             <!-- end list podcasts -->
             <!-- container videos podcast by list -->
             <section class="video-podcast">
-                <video id="myVideo" width="650" height="350" preload="auto" src="http://podcasts.cnn.net/cnn/big/podcasts/ac360/video/2013/08/09/cooper-podcast-8-8.cnn.m4v" type="video/mp4" autoplay controls></video>
+                <video class="video" width="650" height="350" preload="auto" src="" type="video/mp4" autoplay></video>
             </section>
             <!-- end container videos podcast by list -->
             <!-- container description podcast -->
             <section class="description-podcast">
-                <p>descricao</p>
+                <p></p>
             </section>
             <!-- end container description podcast -->
         </section>
@@ -55,58 +55,7 @@
 
         <!-- scripts -->    
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="js/jquery.keynav.js"></script>
-        <script type="text/javascript">
-
-        // call json
-        $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Frss.cnn.com%2Fservices%2Fpodcasting%2Fac360%2Frss.xml'%20AND%20itemPath%3D%22%2F%2Fchannel%22&format=json&diagnostics=true&callback=?", function (data) {
-
-            $(".podcast-title").html(data.query.results.channel.title);
-            $(".podcast-description").html(data.query.results.channel.description);
-            $(".make-text").html(data.query.results.channel.item[0].title);
-
-            var titles = data.query.results.channel.item.map(function(item) {
-            return item.title;
-
-            });
-
-            var urls = data.query.results.channel.item.map(function(item) {
-            return item.origLink;
-
-            });  
-
-            var descri = data.query.results.channel.item.map(function(item) {
-            return item.summary;
-
-            });
-
-            var i=0;
-            $("a").each(function(){if($(this).css("color")=="#ffbbba")i=$(this).index();});
-            
-             $(".description-podcast p").html(descri[i]);
-
-            
-             $(".container-list-podcast ul").append('<li>' + titles.join('</li><li>'));
-                
-                $(".container-list-podcast ul li").each(function(key, value){
-                    var text = $(this).text();
-                    $(this).html('<a href="' + urls[key] + '">' + text + '</a>');
-                });
-
-                    $(".container-list-podcast ul li a").click(function(){
-                        var href = $(this).attr('href');
-                        alert(href);
-                        $("#myvideo").attr("src", href).get(0).play();
-                        return false;
-                    })             
-
-            // Load KeyNavigation
-            a=$('.nav_holder li a').keynav(function() {
-                return window.keyNavigationDisabled;
-            });             
-            
-        });
-        </script>
-
+        <script src="js/jquery.keynav.min.js"></script>
+        <script src="js/custom.js"></script>
     </body>
 </html>

@@ -35,14 +35,14 @@ body{
 }
 
 .podcast-description{
-	font-size: 23px;
+	font-size: 22px;
 	color: white;
-	padding: 8px;
+	padding: 22px 8px 8px 8px;
 	text-transform: uppercase;
 	margin-left: 18px;
 }
 
-#aside{
+#nav{
 	width: 468px;
 	height: 480px;
 	background: white;
@@ -85,7 +85,9 @@ body{
 }
 
 .container-list-podcast ul li a.selected{
-	color: #ffbbba;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .down-button{
@@ -130,7 +132,7 @@ body{
 	margin-left: 6px;
 }
  
-.video-podcast #myVideo{
+.video-podcast .video{
 	margin-top: 11px;
 	margin-left: 10px;
 }
